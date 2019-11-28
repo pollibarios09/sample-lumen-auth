@@ -1,0 +1,27 @@
+version: '3'
+services:
+    web:
+        build:
+            context: ./
+            dockerfile: .docker/nginx/Dockerfile
+        ports:
+            - 5000:80
+        links:
+            - mrf-service
+        volumes:
+            - ./MRF:/var/www/html/MRF
+    mrf-service:
+        build:
+            context: ./
+            dockerfile: .docker/php/Dockerfile
+        volumes:
+            - ./MRF:/var/www/html/MRF
+        environment:
+            LOG_CHANNEL: single
+            DB_CONNECTION: mongodb
+            DB_HOST: "${DB_HOST}"
+            DB_PORT: "${DB_PORT}"
+            DB_MAIN_DATABASE: "${DB_MAIN_DATABASE}"
+            DB_AUTH_DATABASE: "{$DB_AUTH_DATABASE}"
+            DB_USERNAME: "${DB_USERNAME}"
+            DB_PASSWORD: "${DB_PASSWORD}"
