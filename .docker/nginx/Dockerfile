@@ -10,4 +10,4 @@ ADD .docker/nginx/vhost.conf /etc/nginx/conf.d/default.conf
 # RUN echo "server_names_hash_bucket_size 64;" >> /etc/nginx/conf.d/default.conf
 # RUN echo "client_max_body_size 12M;" >> /etc/nginx/conf.d/default.conf
 
-WORKDIR /var/www/html/MRF
+WORKDIR /var/www/html/source-code

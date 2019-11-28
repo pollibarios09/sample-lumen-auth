@@ -54,4 +54,4 @@ RUN EXPECTED_COMPOSER_SIGNATURE=$(wget -q -O - https://composer.github.io/instal
 # COPY docker-config/start.sh /usr/local/bin/start
 # RUN chmod u+x /usr/local/bin/start
 
-WORKDIR /var/www/html/MRF
+WORKDIR /var/www/html/source-code

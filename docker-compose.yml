@@ -5,17 +5,17 @@ services:
             context: ./
             dockerfile: .docker/nginx/Dockerfile
         ports:
-            - 5000:80
+            - 9001:80
         links:
-            - mrf-service
+            - lumen-auth
         volumes:
-            - ./MRF:/var/www/html/MRF
-    mrf-service:
+            - ./source-code:/var/www/html/source-code
+    lumen-auth:
         build:
             context: ./
             dockerfile: .docker/php/Dockerfile
         volumes:
-            - ./MRF:/var/www/html/MRF
+            - ./source-code:/var/www/html/source-code
         environment:
             LOG_CHANNEL: single
             DB_CONNECTION: mongodb
